@@ -1,0 +1,39 @@
+================================================================================
+TRANSCRIPT 1: multi-turn exchange, same thread_id ('memory-demo-continued')
+================================================================================
+[NODE EXECUTED] guardrail_input
+[NODE EXECUTED] router
+[NODE EXECUTED] status_tool
+[NODE EXECUTED] respond
+
+Turn 1 -- 'What is the status of APP-0003?'
+{'trace_id': 'ad61aca2-8c35-48dd-a470-e36b0e5a98f2', 'query': 'What is the status of APP-0003?', 'intent': 'status_lookup', 'source': 'status_tool', 'answer': "Application APP-0003: status='Offered', expected_salary_inr=2390000, escalation_score=0.2 (escalation_recommended=False).", 'grounded': None, 'escalation_score': 0.2, 'escalation_recommended': False, 'guardrail_flags': []}
+[NODE EXECUTED] guardrail_input
+[NODE EXECUTED] router
+[NODE EXECUTED] status_tool
+[NODE EXECUTED] respond
+
+Turn 2 -- 'What about its escalation status?' (no record_id mentioned)
+{'trace_id': 'e251c54d-ddc4-4480-9385-c60056933f5e', 'query': 'What about its escalation status?', 'intent': 'status_lookup', 'source': 'status_tool', 'answer': "Application APP-0003: status='Offered', expected_salary_inr=2390000, escalation_score=0.2 (escalation_recommended=False).", 'grounded': None, 'escalation_score': 0.2, 'escalation_recommended': False, 'guardrail_flags': []}
+
+-> Turn 2 correctly reused APP-0003 from persisted memory.
+
+Full persisted history for 'memory-demo-continued':
+  {'role': 'user', 'content': 'What is the status of APP-0003?', 'record_id': 'APP-0003'}
+  {'role': 'assistant', 'content': "Application APP-0003: status='Offered', expected_salary_inr=2390000, escalation_score=0.2 (escalation_recommended=False)."}
+  {'role': 'user', 'content': 'What about its escalation status?', 'record_id': 'APP-0003'}
+  {'role': 'assistant', 'content': "Application APP-0003: status='Offered', expected_salary_inr=2390000, escalation_score=0.2 (escalation_recommended=False)."}
+
+================================================================================
+TRANSCRIPT 2: FRESH conversation, new thread_id ('memory-demo-fresh')
+================================================================================
+History before any turns (must be empty): []
+[NODE EXECUTED] guardrail_input
+[NODE EXECUTED] router
+[NODE EXECUTED] status_tool
+[NODE EXECUTED] respond
+
+Same ambiguous question, but in the brand-new thread:
+{'trace_id': 'f1261292-bdb7-41fb-be42-d7b2998662fe', 'query': 'What about its escalation status?', 'intent': 'status_lookup', 'source': 'status_tool', 'answer': 'I could not find an application to check -- no record_id was given, and none is remembered from this conversation yet.', 'grounded': None, 'escalation_score': None, 'escalation_recommended': None, 'guardrail_flags': []}
+
+-> Fresh thread correctly has NO memory of APP-0003 -- state is absent/reset as required.

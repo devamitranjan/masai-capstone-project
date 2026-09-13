@@ -1,0 +1,25 @@
+Tools exposed by MCP server: ['check_job_application_status']
+
+================================================================================
+Calling check_job_application_status(record_id='APP-0001') over MCP
+================================================================================
+Standardized MCP response:
+ is_error: False
+ structured_content: {'record_id': 'APP-0001', 'found': True, 'status': 'Interview Scheduled', 'expected_salary_inr': 1180000, 'days_since_created': 29, 'flagged_priority_review': False, 'escalation_score': 0.4833, 'escalation_recommended': False}
+ content blocks: ['{"record_id":"APP-0001","found":true,"status":"Interview Scheduled","expected_salary_inr":1180000,"days_since_created":29,"flagged_priority_review":false,"escalation_score":0.4833,"escalation_recommended":false}']
+
+================================================================================
+Calling check_job_application_status(record_id='APP-0010') over MCP
+================================================================================
+Standardized MCP response:
+ is_error: False
+ structured_content: {'record_id': 'APP-0010', 'found': True, 'status': 'Offered', 'expected_salary_inr': 3470000, 'days_since_created': 1, 'flagged_priority_review': False, 'escalation_score': 0.0167, 'escalation_recommended': False}
+ content blocks: ['{"record_id":"APP-0010","found":true,"status":"Offered","expected_salary_inr":3470000,"days_since_created":1,"flagged_priority_review":false,"escalation_score":0.0167,"escalation_recommended":false}']
+
+================================================================================
+Calling check_job_application_status(record_id='APP-9999') over MCP
+================================================================================
+Standardized MCP response:
+ is_error: False
+ structured_content: {'record_id': 'APP-9999', 'found': False}
+ content blocks: ['{"record_id":"APP-9999","found":false}']

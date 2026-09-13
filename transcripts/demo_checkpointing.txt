@@ -1,0 +1,25 @@
+================================================================================
+STEP (a)+(b): initial run, interrupted before 'respond'
+================================================================================
+[NODE EXECUTED] guardrail_input
+[NODE EXECUTED] router
+[NODE EXECUTED] rag_tool
+
+State after interrupted run (no 'response' key yet):
+{'trace_id': 'a19efcac-237c-4122-98ec-0b7b947cef89', 'thread_id': 'checkpoint-demo-thread', 'query': 'What is the notice period for a Software Engineer?', 'masked_query': 'What is the notice period for a Software Engineer?', 'guardrail_flags': [], 'blocked': False, 'intent': 'policy_question', 'record_id': None}
+
+Next node(s) pending per checkpoint: ('respond',)
+
+================================================================================
+STEP (c): resuming the SAME thread_id (passing None as input)
+================================================================================
+Expect ONLY '[NODE EXECUTED] respond' below -- guardrail_input/router/rag_tool
+must NOT reprint, proving they were loaded from the checkpoint, not re-executed.
+
+[NODE EXECUTED] respond
+
+Final response after resume:
+{'trace_id': 'a19efcac-237c-4122-98ec-0b7b947cef89', 'query': 'What is the notice period for a Software Engineer?', 'intent': 'policy_question', 'source': 'rag_tool', 'answer': 'Based on our HR policy documents: The standard notice period is 30 days for individual contributor roles such as Software Engineer, Data Analyst, and Sales Associate, and 60 days for managerial roles such as Product Manager and HR Executive.', 'grounded': True, 'escalation_score': None, 'escalation_recommended': None, 'guardrail_flags': []}
+
+-> Checkpointing demo complete: interrupted run resumed from the SAME thread_id,
+   completed node results (guardrail_input, router, rag_tool) were NOT re-executed.

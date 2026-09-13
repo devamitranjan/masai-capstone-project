@@ -1,0 +1,92 @@
+
+================================================================================
+COLLECTION: kb_fixed
+================================================================================
+
+Q: What is the notice period for a Software Engineer?
+  relevant doc(s)      = {'05_notice_period'}
+  retrieved top-3 docs = ['05_notice_period', '11_exit_interview', '02_interview_scheduling']
+  precision@3 = 1/3 = 0.333
+  recall@3    = 1/1 = 1.000
+
+Q: How long does background verification take?
+  relevant doc(s)      = {'04_background_verification'}
+  retrieved top-3 docs = ['04_background_verification', '12_data_retention', '02_interview_scheduling']
+  precision@3 = 1/3 = 0.333
+  recall@3    = 1/1 = 1.000
+
+Q: When is the referral bonus paid out to an employee?
+  relevant doc(s)      = {'06_referral_bonus'}
+  retrieved top-3 docs = ['06_referral_bonus', '08_probation_period', '05_notice_period']
+  precision@3 = 1/3 = 0.333
+  recall@3    = 1/1 = 1.000
+
+Q: How many days does a candidate have to accept an offer?
+  relevant doc(s)      = {'03_offer_negotiation'}
+  retrieved top-3 docs = ['03_offer_negotiation', '05_notice_period', '02_interview_scheduling']
+  precision@3 = 1/3 = 0.333
+  recall@3    = 1/1 = 1.000
+
+Q: What happens to applicant data after 24 months?
+  relevant doc(s)      = {'12_data_retention'}
+  retrieved top-3 docs = ['12_data_retention', '01_eligibility_criteria', '02_interview_scheduling']
+  precision@3 = 1/3 = 0.333
+  recall@3    = 1/1 = 1.000
+
+Q: Who conducts the exit interview?
+  relevant doc(s)      = {'11_exit_interview'}
+  retrieved top-3 docs = ['11_exit_interview', '08_probation_period', '02_interview_scheduling']
+  precision@3 = 1/3 = 0.333
+  recall@3    = 1/1 = 1.000
+
+  AVG precision@3 = 0.333
+  AVG recall@3    = 1.000
+
+================================================================================
+COLLECTION: kb_sentence
+================================================================================
+
+Q: What is the notice period for a Software Engineer?
+  relevant doc(s)      = {'05_notice_period'}
+  retrieved top-3 docs = ['05_notice_period', '08_probation_period', '01_eligibility_criteria']
+  precision@3 = 1/3 = 0.333
+  recall@3    = 1/1 = 1.000
+
+Q: How long does background verification take?
+  relevant doc(s)      = {'04_background_verification'}
+  retrieved top-3 docs = ['04_background_verification', '12_data_retention', '02_interview_scheduling']
+  precision@3 = 1/3 = 0.333
+  recall@3    = 1/1 = 1.000
+
+Q: When is the referral bonus paid out to an employee?
+  relevant doc(s)      = {'06_referral_bonus'}
+  retrieved top-3 docs = ['06_referral_bonus', '08_probation_period', '05_notice_period']
+  precision@3 = 1/3 = 0.333
+  recall@3    = 1/1 = 1.000
+
+Q: How many days does a candidate have to accept an offer?
+  relevant doc(s)      = {'03_offer_negotiation'}
+  retrieved top-3 docs = ['03_offer_negotiation', '02_interview_scheduling', '05_notice_period']
+  precision@3 = 1/3 = 0.333
+  recall@3    = 1/1 = 1.000
+
+Q: What happens to applicant data after 24 months?
+  relevant doc(s)      = {'12_data_retention'}
+  retrieved top-3 docs = ['12_data_retention', '07_internal_transfer', '02_interview_scheduling']
+  precision@3 = 1/3 = 0.333
+  recall@3    = 1/1 = 1.000
+
+Q: Who conducts the exit interview?
+  relevant doc(s)      = {'11_exit_interview'}
+  retrieved top-3 docs = ['11_exit_interview', '08_probation_period', '02_interview_scheduling']
+  precision@3 = 1/3 = 0.333
+  recall@3    = 1/1 = 1.000
+
+  AVG precision@3 = 0.333
+  AVG recall@3    = 1.000
+
+================================================================================
+COMPARISON
+================================================================================
+kb_fixed:    avg precision@3=0.333  avg recall@3=1.000
+kb_sentence: avg precision@3=0.333  avg recall@3=1.000

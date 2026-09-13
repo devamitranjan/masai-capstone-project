@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+chroma_db/
+checkpoints.sqlite
+record_manager_cache.sql
+data/conversation_memory.json
+data/requests.log.jsonl
+.env

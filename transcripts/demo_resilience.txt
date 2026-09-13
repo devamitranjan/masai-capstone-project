@@ -1,0 +1,35 @@
+================================================================================
+(a) Retry policy recovers a simulated transient failure (status_tool)
+================================================================================
+[NODE EXECUTED] guardrail_input
+[NODE EXECUTED] router
+[NODE EXECUTED] status_tool
+[NODE EXECUTED] status_tool
+[NODE EXECUTED] status_tool
+[NODE EXECUTED] respond
+
+Final response (call completed without raising, after 2 simulated failures + 2 retries):
+{'trace_id': '8a9c154c-4651-4612-ba64-b65dd083f778', 'query': 'What is the status of APP-RETRYTEST?', 'intent': 'status_lookup', 'source': 'status_tool', 'answer': "I could not find an application with record_id 'APP-RETRYTEST'.", 'grounded': None, 'escalation_score': None, 'escalation_recommended': None, 'guardrail_flags': []}
+
+-> Retry policy correctly recovered within its configured max_attempts
+   (3 'status_tool' executions logged above: 2 simulated failures + 1 success).
+
+================================================================================
+(b) Per-node timeout fires a clean error on rag_tool (not a hang)
+================================================================================
+[NODE EXECUTED] guardrail_input
+[NODE EXECUTED] router
+[NODE EXECUTED] rag_tool
+
+NodeTimeoutError correctly raised (clean error, not a hang): Node 'rag_tool' exceeded its run timeout of 2.000s (elapsed: 2.002s).
+-> Per-node timeout fired as expected.
+
+================================================================================
+(c) Global timeout cancels the WHOLE run on a simulated total-time overrun
+================================================================================
+[NODE EXECUTED] guardrail_input
+[NODE EXECUTED] router
+[NODE EXECUTED] rag_tool
+
+asyncio.TimeoutError correctly raised after 2.0s global timeout.
+-> Global timeout correctly cancelled the entire graph run.

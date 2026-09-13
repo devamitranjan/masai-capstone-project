@@ -1,0 +1,58 @@
+================================================================================
+STEP 1: Threshold calibration -- measured top-1 cosine similarity
+================================================================================
+
+IN-SCOPE queries:
+  'What is the notice period for a Software Engineer?'
+    top-1 similarity (fixed)    = 0.741
+    top-1 similarity (sentence) = 0.723
+  'How long does background verification usually take?'
+    top-1 similarity (fixed)    = 0.605
+    top-1 similarity (sentence) = 0.656
+  'When is the referral bonus paid out?'
+    top-1 similarity (fixed)    = 0.708
+    top-1 similarity (sentence) = 0.741
+
+OUT-OF-SCOPE queries:
+  'What is the capital of France?'
+    top-1 similarity (fixed)    = 0.109
+    top-1 similarity (sentence) = 0.022
+  'How do I bake a chocolate cake?'
+    top-1 similarity (fixed)    = 0.089
+    top-1 similarity (sentence) = 0.081
+
+==> Chosen CALIBRATED_THRESHOLD = 0.4 (set between the in-scope and out-of-scope clusters measured above)
+
+================================================================================
+STEP 2: Grounded generation demo (>=5 in-scope + 1 out-of-scope)
+================================================================================
+
+Q: What is the notice period for a Software Engineer?
+   top_similarity=0.723  grounded=True
+   A: Based on our HR policy documents: The standard notice period is 30 days for individual contributor roles such as Software Engineer, Data Analyst, and Sales Associate, and 60 days for managerial roles such as Product Manager and HR Executive.
+
+Q: How long does background verification take?
+   top_similarity=0.649  grounded=True
+   A: Based on our HR policy documents: The verification vendor typically completes checks within 10 business days, though checks involving international employment history can take up to three weeks.
+
+Q: When is the referral bonus paid out to an employee?
+   top_similarity=0.772  grounded=True
+   A: Based on our HR policy documents: Employees who refer a candidate that is eventually hired are eligible for a referral bonus, paid out in two parts: 40% on the referred candidate's date of joining and the remaining 60% after the candidate completes their probation period.
+
+Q: How many days does a candidate have to accept an offer?
+   top_similarity=0.739  grounded=True
+   A: Based on our HR policy documents: After an offer is extended, the candidate has seven calendar days to accept, decline, or request a negotiation before the offer automatically expires.
+
+Q: What happens to applicant data after 24 months?
+   top_similarity=0.726  grounded=True
+   A: Based on our HR policy documents: Applicant data, including resumes, contact details, and interview notes, is retained for 24 months from the date of the last activity on the application, after which it is automatically purged from active systems.
+
+Q: Who conducts the exit interview?
+   top_similarity=0.685  grounded=True
+   A: Based on our HR policy documents: The exit interview is scheduled within the first week of the employee's notice period and covers reasons for leaving, overall experience, and any unresolved concerns about their role or team.
+
+Q (deliberately out-of-scope): What is the best recipe for biryani?
+   top_similarity=0.061  grounded=False
+   A: I don't know. This question is outside the scope of the Naukri.com HR policy knowledge base I have access to -- please contact HR directly for this.
+
+   -> Fallback correctly triggered for out-of-scope query.

@@ -1,0 +1,19 @@
+topic                            grounded  ctx_rel  ground   ans_rel   query
+--------------------------------------------------------------------------------------------------------------
+eligibility_criteria             True      0.649    0.773    0.565     What are the minimum eligibility requirements to apply for a job?
+interview_scheduling             True      0.707    0.879    0.711     How far in advance is an interview slot proposed to a candidate?
+offer_negotiation                True      0.711    0.771    0.647     How many days does a candidate have to accept a job offer?
+background_verification          True      0.726    0.747    0.610     How long does the background verification process usually take?
+notice_period                    True      0.685    0.808    0.722     What is the standard notice period for a managerial role?
+referral_bonus                   True      0.836    0.911    0.781     When does an employee receive the second part of a referral bonus?
+internal_transfer                True      0.775    0.853    0.752     How long must an employee wait before applying for an internal transfer?
+probation_period                 True      0.767    0.812    0.759     How long is the probation period for a new hire?
+remote_work                      True      0.698    0.782    0.706     Which roles are generally eligible for fully remote work?
+diversity_hiring                 True      0.730    0.873    0.653     What are the diversity hiring guidelines for interview panels?
+exit_interview                   True      0.786    0.858    0.772     Is participation in the exit interview mandatory?
+data_retention                   True      0.839    0.856    0.821     How long is applicant data retained after the last activity?
+extra_in_scope_notice_period     True      0.728    0.711    0.727     Can a new hire get help with their notice period buyout?
+out_of_scope_1                   False     0.071    0.161    0.064     What is the weather like in Bangalore today?
+out_of_scope_2_edge              False     0.216    0.402    0.226     Can you tell me Naukri.com's current stock price?
+--------------------------------------------------------------------------------------------------------------
+AVERAGE across 15 queries: context_relevance=0.6615  groundedness=0.7463  answer_relevance=0.6343

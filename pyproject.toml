@@ -1,0 +1,27 @@
+[project]
+name = "naukri-support-agent"
+version = "1.0.0"
+description = "Naukri.com domain support agent capstone: RAG + LangGraph + FastAPI + MCP + resilience, deterministic under MOCK_LLM"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "chromadb>=0.5.23",
+    "sentence-transformers>=3.3.1",
+    "langgraph>=0.2.60",
+    "langgraph-checkpoint-sqlite>=2.0.1",
+    "fastmcp>=2.3.0",
+    "fastapi>=0.115.6",
+    "uvicorn>=0.34.0",
+    "pydantic>=2.10.3",
+    "jsonschema>=4.23.0",
+    "python-dotenv>=1.0.1",
+    "aiosqlite>=0.22.1",
+]
+
+[project.optional-dependencies]
+# Optional real LLM (Task 4, opt-in -- see README.md "Optional: real LLM").
+# Not required for grading: every acceptance criterion holds under MOCK_LLM alone.
+real-llm = [
+    "transformers>=4.44.0",
+    "torch>=2.2.0",
+]
