@@ -13,11 +13,13 @@ Task 15 — SQLite-based checkpointing demo.
 import asyncio
 import sys
 import uuid
+from typing import Any
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
+from langchain_core.runnables import RunnableConfig
 
 from src.container import build_graph
 
@@ -26,9 +28,10 @@ THREAD_ID = "checkpoint-demo-thread"
 
 
 async def main() -> None:
+    Path(CHECKPOINT_DB).unlink(missing_ok=True)
     async with AsyncSqliteSaver.from_conn_string(CHECKPOINT_DB) as checkpointer:
         app = build_graph(checkpointer=checkpointer, interrupt_before=["respond"])
-        config = {"configurable": {"thread_id": THREAD_ID}}
+        config: RunnableConfig = {"configurable": {"thread_id": THREAD_ID}}
 
         print("=" * 80)
         print("STEP (a)+(b): initial run, interrupted before 'respond'")
@@ -38,7 +41,7 @@ async def main() -> None:
             "thread_id": THREAD_ID,
             "query": "What is the notice period for a Software Engineer?",
         }
-        result = await app.ainvoke(inputs, config=config)
+        result = await app.ainvoke(inputs, config=config)  # type: ignore[arg-type]
         print("\nState after interrupted run (no 'response' key yet):")
         print({k: v for k, v in result.items() if k != "rag_result"})
         assert "response" not in result or result.get("response") is None, "Run should have stopped before respond"
